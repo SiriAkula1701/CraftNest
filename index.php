@@ -63,11 +63,11 @@ include("includes/db.php");
 <tr>
 
 <?php
-
 $query = "SELECT p.*, c.category_name
           FROM products p
           JOIN categories c
-          ON p.category_id=c.category_id
+          ON p.category_id = c.category_id
+          WHERE p.is_recommended = 1
           ORDER BY p.product_id DESC";
 
 $result = mysqli_query($conn,$query);

@@ -15,10 +15,13 @@ if(isset($_POST['add_product'])){
     $price = $_POST['price'];
     $stock = $_POST['stock'];
     $category_id = $_POST['category'];
+    $is_recommended = isset($_POST['is_recommended']) ? 1 : 0;
 
     // Insert Product
-    $query = "INSERT INTO products(category_id, product_name, description, price, stock)
-              VALUES('$category_id','$product_name','$description','$price','$stock')";
+    $query = "INSERT INTO products
+          (category_id, product_name, description, price, stock, is_recommended)
+          VALUES
+          ('$category_id', '$product_name', '$description', '$price', '$stock', '$is_recommended')";
 
     if(mysqli_query($conn,$query)){
 
@@ -677,6 +680,28 @@ body {
 
             </div>
 
+        
+<!-- MOST RECOMMENDED OPTION -->
+<div class="form-group">
+    <label>Product Recommendation</label>
+
+    <label style="display: flex; align-items: center; gap: 10px;
+                  font-weight: normal; cursor: pointer;">
+
+        <input
+            type="checkbox"
+            name="is_recommended"
+            value="1"
+            style="width: auto; margin: 0;"
+        >
+
+        Show this product in Most Recommended
+    </label>
+
+    <p style="margin-top: 8px; font-size: 12px; color: #8b7564;">
+        Leave unchecked if you only want this product in its category.
+    </p>
+</div>
 
             <!-- BUTTONS -->
 
